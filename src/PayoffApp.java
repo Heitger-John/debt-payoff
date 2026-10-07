@@ -1,11 +1,22 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PayoffApp {
     public static void main(String[] args) {
+
+        // CreditCard costco = new CreditCard("Costco Visa", 20.33, 300);
+        // CreditCard target = new CreditCard("Red Card", 37.62, 600);
+        // System.out.println(target.getName());
+        // costco.setName("Visa Gold");
+        // System.out.println(costco);
+        // System.out.println(costco.getName());
         Scanner scan = new Scanner(System.in);
 
         // Make an empty arrayList to hold aprs
-
+        List<Double> aprs = new ArrayList<>();
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
@@ -14,16 +25,23 @@ public class PayoffApp {
             double balance = scan.nextDouble();
 
             // add apr to arrayList
+            aprs.add(apr);
 
             // Consume \n after balance input 
             if(scan.hasNextLine()) scan.nextLine();
+            CreditCard card = new CreditCard(name, apr, balance);
+            System.out.println(card);
 
-            String aprString = String.format("%.2f%%", apr);
-            String balanceString = String.format("$%.2f", balance);
-            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+            // String aprString = String.format("%.2f%%", apr);
+            // String balanceString = String.format("$%.2f", balance);
+            // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
         }
+        Collections.sort(aprs, Comparator.reverseOrder());
+        System.out.println(aprs);
 
         // sort arraylist
+
+
         // print arraylist
     }
 }
